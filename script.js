@@ -5,7 +5,6 @@ const isNumber = function (num) {
 };
 
 function one(x) {
-  let count = 10;
   function two() {
     const a = prompt('Угадай число от 1 до 100');
     if (a == null) {
@@ -15,20 +14,11 @@ function one(x) {
       two();
     } else if (a == x) {
       alert('Поздравляю, Вы угадали!!!');
-    } else if (count == 1) {
-      if (confirm('Попытки закончились, хотите сыграть еще?') == true) {
-        count = 10;
-        two();
-      } else alert('Спасибо за игру!');
     } else if (a < x) {
-      count--;
-      console.log('count: ', count);
-      alert('Загаданное число больше, осталось попыток ' + count);
+      alert('Загаданное число больше');
       two();
     } else if (a > x) {
-      count--;
-      console.log('count: ', count);
-      alert('Загаданное число меньше, осталось попыток ' + count);
+      alert('Загаданное число меньше');
       two();
     }
   }
