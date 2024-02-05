@@ -28,12 +28,10 @@ function one(botNumber) {
       } else alert('Спасибо за игру!');
     } else if (userNumber < botNumber) {
       count--;
-      console.log('count: ', count);
       alert('Загаданное число больше, осталось попыток ' + count);
       two();
     } else if (userNumber > botNumber) {
       count--;
-      console.log('count: ', count);
       alert('Загаданное число меньше, осталось попыток ' + count);
       two();
     }
