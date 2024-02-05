@@ -4,28 +4,34 @@ const isNumber = function (num) {
   return !isNaN(parseFloat(num)) && isFinite(num) && !/\s/.test(num);
 };
 
-function one(x) {
+const getRandomInt = function (min, max) {
+  min = Math.ceil(min);
+  max = max + 1;
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+function one(botNumber) {
   let count = 10;
   function two() {
-    const a = prompt('Угадай число от 1 до 100');
-    if (a == null) {
+    const userNumber = prompt('Угадай число от 1 до 100');
+    if (userNumber == null) {
       alert('Игра окончена');
-    } else if (isNumber(a) !== true) {
+    } else if (isNumber(userNumber) !== true) {
       alert('Введи число!');
       two();
-    } else if (a == x) {
+    } else if (userNumber == botNumber) {
       alert('Поздравляю, Вы угадали!!!');
     } else if (count == 1) {
-      if (confirm('Попытки закончились, хотите сыграть еще?') == true) {
-        count = 10;
-        two();
+      if (confirm('Попытки закончились, хотите сыграть еще?')) {
+        one(getRandomInt(1, 100));
       } else alert('Спасибо за игру!');
-    } else if (a < x) {
+    } else if (userNumber < botNumber) {
       count--;
       console.log('count: ', count);
       alert('Загаданное число больше, осталось попыток ' + count);
       two();
-    } else if (a > x) {
+    } else if (userNumber > botNumber) {
       count--;
       console.log('count: ', count);
       alert('Загаданное число меньше, осталось попыток ' + count);
@@ -35,4 +41,4 @@ function one(x) {
   two();
 }
 
-one(10);
+one(getRandomInt(1, 100));
